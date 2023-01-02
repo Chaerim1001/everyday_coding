@@ -2,10 +2,13 @@ package com.everyday_coding.domain.member;
 
 import com.everyday_coding.domain.BaseTimeEntity;
 import com.everyday_coding.domain.account.Account;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

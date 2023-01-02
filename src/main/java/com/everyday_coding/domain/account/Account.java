@@ -1,10 +1,13 @@
 package com.everyday_coding.domain.account;
 
 import com.everyday_coding.domain.BaseTimeEntity;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Account extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
