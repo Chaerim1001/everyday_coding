@@ -2,10 +2,13 @@ package com.everyday_coding.domain.account;
 
 import com.everyday_coding.domain.BaseTimeEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Account extends BaseTimeEntity {
@@ -19,4 +22,10 @@ public class Account extends BaseTimeEntity {
 
     @Column(name = "password", length = 105, nullable = false)
     private String password;
+
+    @Builder
+    public Account(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }

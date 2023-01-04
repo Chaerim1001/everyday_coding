@@ -38,3 +38,7 @@ out/
 
 ### 환경변수 파일 ###
 env.properties
+
+### template ###
+/static/css
+/static/js/view_js

@@ -3,10 +3,14 @@ package com.everyday_coding.domain.member;
 import com.everyday_coding.domain.BaseTimeEntity;
 import com.everyday_coding.domain.account.Account;
 import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.awt.*;
 
+@Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member extends BaseTimeEntity {
@@ -21,4 +25,10 @@ public class Member extends BaseTimeEntity {
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "account_id")
     private Account account;
+
+    @Builder
+    public Member(String nickname, Account account) {
+        this.nickname = nickname;
+        this.account = account;
+    }
 }
