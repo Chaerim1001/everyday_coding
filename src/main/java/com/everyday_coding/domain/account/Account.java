@@ -23,9 +23,17 @@ public class Account extends BaseTimeEntity {
     @Column(name = "password", length = 105, nullable = false)
     private String password;
 
+    @Column(length = 1000)
+    private String oauthAccessToken;
+
+    @Column(length = 1000)
+    private String oauthRefreshToken;
+
     @Builder
-    public Account(String email, String password) {
+    public Account(String email, String password, String oauthAccessToken, String oauthRefreshToken) {
         this.email = email;
         this.password = password;
+        this.oauthAccessToken = oauthAccessToken;
+        this.oauthRefreshToken = oauthRefreshToken;
     }
 }
