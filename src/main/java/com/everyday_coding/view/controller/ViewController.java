@@ -11,8 +11,9 @@ public class ViewController {
         return "register";
     }
 
-    @GetMapping("/signin")
-    public String signinView() {
-        return "signin";
+    @GetMapping("/login")
+    public String loginView() {
+        return "login";
     }
+
 }

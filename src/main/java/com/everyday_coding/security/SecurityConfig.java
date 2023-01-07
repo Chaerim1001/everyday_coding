@@ -1,4 +1,4 @@
-package com.everyday_coding.config;
+package com.everyday_coding.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,12 +14,13 @@ public class SecurityConfig {
 
     private static final String[] GET_PERMITTED_URLS = {
             "/",
-            "/signin",
+            "/login",
             "/register",
     };
 
     private static final String[] POST_PERMITTED_URLS = {
-            "/api/v1/members"
+            "/api/v1/members",
+            "/login"
     };
 
     @Bean
@@ -28,8 +29,15 @@ public class SecurityConfig {
                 .cors()
                 .and()
                 .csrf().disable()
-                .formLogin().disable()
-                .httpBasic().disable()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .usernameParameter("email")
+                .defaultSuccessUrl("/")
+                .permitAll()
+                .and()
+                .httpBasic()
+                .and()
                 .logout()
                 .logoutSuccessUrl("/")
                 .and()
