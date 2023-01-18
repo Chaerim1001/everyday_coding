@@ -23,9 +23,9 @@ env:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r everyday-coding
+  - zip -r everyday_coding
   - mkdir -p deploy
-  - mv everyday-coding.zip deploy/everyday-coding.zip
+  - mv everyday_coding.zip deploy/everyday_coding.zip
 
 deploy:
   - provider: s3
