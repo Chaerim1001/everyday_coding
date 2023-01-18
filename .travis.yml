@@ -23,7 +23,7 @@ env:
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r everyday_coding
+  - zip -r everyday_coding *
   - mkdir -p deploy
   - mv everyday_coding.zip deploy/everyday_coding.zip
 
