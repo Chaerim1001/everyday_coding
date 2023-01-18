@@ -14,7 +14,29 @@ cache:
 services:
   - mysql
 
+env:
+  - MYSQL_HOST=$MYSQL_HOST
+  - MYSQL_PORT=$MYSQL_PORT
+  - MYSQL_USER=$MYSQL_USER
+  - MYSQL_PASSWORD=$MYSQL_PASSWORD
+
 script: "./gradlew clean build"
+
+before_deploy:
+  - zip -r everyday-coding
+  - mkdir -p deploy
+  - mv everyday-coding.zip deploy/everyday-coding.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: everyday-coding-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private
+    local_dir: deploy
+    wait-until-deployed: true
 
 notifications:
   email:
